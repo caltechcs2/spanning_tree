@@ -55,6 +55,7 @@ double Star::cartesianDistanceTo(Star * dest)
     return sqrt(dx * dx + dy * dy + dz * dz);
 }
 
+#ifndef NO_GFX
 /**
  * @brief Sets the current GL color to a color appropriate for security status.
  *
@@ -167,3 +168,4 @@ void Star::drawEdges()
 
     }
 }
+#endif

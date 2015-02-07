@@ -203,6 +203,7 @@ void Starmap::loadStarmapFromDB()
 
 }
 
+#ifndef NO_GFX
 /**
  * @brief Renders all the stars in this starmap.
  */
@@ -384,3 +385,4 @@ void Starmap::mouseSelect(int which, int x, int y, double dist, double azm, doub
 
 	}
 }
+#endif
