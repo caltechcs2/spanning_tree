@@ -37,7 +37,7 @@
 *
 */
 
-#include "star.h"
+#include "star.hpp"
 
 /**
  * @brief Returns the straight-line distance to the target star.
