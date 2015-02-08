@@ -37,7 +37,7 @@
 *
 */
 
-#include "starmap.h"
+#include "starmap.hpp"
 
 /**
  * @brief Calculates the shortest path to the destination star.
@@ -138,7 +138,12 @@ void Starmap::loadStarmapFromDB()
     const char * unused;
     // prepare the relevant SQL statement
     sqlite3_prepare_v2(db,
+#if DATASET_FULL
     "SELECT solarSystemID, solarSystemName, x, y, z, security FROM solarSystems WHERE 1",
+#else
+    "SELECT solarSystemID, solarSystemName, x, y, z, security FROM solarSystems WHERE "
+    "regionID = \"10000002\" OR regionID = \"10000016\" OR regionID = \"10000023\" OR regionID = \"10000033\"",
+#endif
     -1,
     &ppstmt,
     &unused);
@@ -170,7 +175,13 @@ void Starmap::loadStarmapFromDB()
     INFO("Loading edges...");
 
     sqlite3_prepare_v2(db,
+#if DATASET_FULL
     "SELECT fromSolarSystemID, toSolarSystemID FROM solarSystemJumpn WHERE 1",
+#else
+    "SELECT fromSolarSystemID, toSolarSystemID FROM solarSystemJumpn WHERE "
+    "(fromRegionID = \"10000002\" OR fromRegionID = \"10000016\" OR fromRegionID = \"10000023\" OR fromRegionID = \"10000033\")"
+    "AND (toRegionID = \"10000002\" OR toRegionID = \"10000016\" OR toRegionID = \"10000023\" OR toRegionID = \"10000033\")",
+#endif
     -1,
     &ppstmt,
     &unused);
