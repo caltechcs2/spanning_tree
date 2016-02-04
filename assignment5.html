@@ -299,7 +299,7 @@ bool Node::dfs(int to_find)
         return true;
     }
     std::vector&lt;Node*&gt;::iterator i;
-    for(i = this-&gt;edges.begin(), i != this-&gt;edges.end(); i++)
+    for(i = this-&gt;edges.begin(); i != this-&gt;edges.end(); i++)
     {
         Node * n = *i;
         bool r = n-&gt;dfs(to_find);
