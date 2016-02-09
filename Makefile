@@ -31,7 +31,7 @@ docs :
 graphview : $(addprefix $(OBJDIR)/,$(GRAPHVIEW_OBJS))
 	$(LD) -o $(BINDIR)/$@ $^ $(LDFLAGS) 
 
-$(OBJDIR)/%.o : $(SRCDIR)/$(notdir %.cpp)
+$(OBJDIR)/%.o : $(SRCDIR)/$(notdir %.cpp) $(SRCDIR)/$(notdir %.hpp)
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@ 
 
 clean:
