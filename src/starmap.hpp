@@ -53,6 +53,7 @@
  */
 class Starmap
 {
+    friend class StarmapTester;  // Used by TAs to help grade. Do not remove.
 
 protected:
     std::map<int, Star *> stars;
