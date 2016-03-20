@@ -1,5 +1,5 @@
 /**
-* @file error.h
+* @file error.hpp
 * @author Ben Yuan <<byuan@caltech.edu>>
 * @version 1.0
 * @date 2012-2014
