@@ -98,7 +98,7 @@ void Starmap::markPath(std::list<Star*> path)
     std::map<int, Star *>::iterator f;
     for(f = this->stars.begin(); f != this->stars.end(); f++)
     {
-        f->second->path_next = NULL;
+        f->second->path_next = nullptr;
     }
 
     std::list<Star*>::iterator i, j;
@@ -235,7 +235,7 @@ void Starmap::render(double dist, double azm, double alt, bool pick)
     glScaled(1e-2, 1e-2, 1e-2);
     // so first we center ourselves on our focus star
     GLdouble * focus_coords;
-    if(this->focus_star != NULL)
+    if(this->focus_star != nullptr)
     {
         focus_coords = this->focus_star->getCoords();
         glTranslated(-focus_coords[0], -focus_coords[1], -focus_coords[2]);
@@ -277,7 +277,7 @@ void Starmap::render(double dist, double azm, double alt, bool pick)
     // then we want to render the selection diamonds
     if(!pick)
     {
-        if(this->selected_star != NULL)
+        if(this->selected_star != nullptr)
         {
             glColor4d(0.0, 0.5, 1.0, 0.5);
             GLdouble * coords = this->selected_star->getCoords();
@@ -293,7 +293,7 @@ void Starmap::render(double dist, double azm, double alt, bool pick)
             glPopMatrix();
         }
 
-        if(this->selected_star_2 != NULL)
+        if(this->selected_star_2 != nullptr)
         {
             glColor4d(1.0, 0.5, 0.0, 0.5);
             GLdouble * coords = this->selected_star_2->getCoords();

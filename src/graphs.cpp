@@ -90,7 +90,7 @@ void keyboard_handler(SDL_keysym* keysym, bool state) {
         break;
 
         case SDLK_RETURN:
-            if(state && u != NULL && v != NULL)
+            if(state && u != nullptr && v != nullptr)
             {
                 INFO("Finding shortest path from %s to %s...", u->getName().c_str(), v->getName().c_str());
                 std::list<Star*> path = map->shortestPath(u, v, cost_spec);

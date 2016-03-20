@@ -63,9 +63,9 @@ protected:
 
 public:
     Starmap() {
-        this->selected_star = NULL;
-        this->selected_star_2 = NULL;
-        this->focus_star = NULL;
+        this->selected_star = nullptr;
+        this->selected_star_2 = nullptr;
+        this->focus_star = nullptr;
     }
     ~Starmap() {}
     void addStar(Star * s) { this->stars[s->getID()] = s; }
