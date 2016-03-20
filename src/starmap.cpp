@@ -325,7 +325,6 @@ void Starmap::render(double dist, double azm, double alt, bool pick)
 void Starmap::mouseSelect(int which, int x, int y, double dist, double azm, double alt)
 {
     GLint viewport[4];
-	double ratio;
     GLint hits;
     GLuint selectBuf[4096];
 
@@ -343,7 +342,6 @@ void Starmap::mouseSelect(int which, int x, int y, double dist, double azm, doub
 	glLoadIdentity();
 
 	gluPickMatrix(x,viewport[3]-y,9,9,viewport);
-	ratio = (viewport[2]+0.0) / viewport[3];
 	gluPerspective(45, (double)WIDTH/HEIGHT, .0001, 1000);
 	glMatrixMode(GL_MODELVIEW);
 
@@ -358,7 +356,7 @@ void Starmap::mouseSelect(int which, int x, int y, double dist, double azm, doub
 	glFlush();
 	hits = glRenderMode(GL_RENDER);
 	if (hits != 0){
-        GLint i, j, numberOfNames;
+        GLint i, numberOfNames;
         GLuint names, *ptr, minZ, *ptrNames;
 
         ptr = (GLuint *) selectBuf;

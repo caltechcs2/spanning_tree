@@ -4,22 +4,22 @@
 * @version 1.0
 * @date 2012-2014
 * @copyright see License section
-* 
+*
 * @brief The main executable routine.
-* 
+*
 * @section License
 * Copyright (c) 2012-2014 California Institute of Technology.
 * All rights reserved.
-* 
+*
 * Redistribution and use in source and binary forms, with or without
-* modification, are permitted provided that the following conditions are met: 
-* 
+* modification, are permitted provided that the following conditions are met:
+*
 * 1. Redistributions of source code must retain the above copyright notice, this
-*    list of conditions and the following disclaimer. 
+*    list of conditions and the following disclaimer.
 * 2. Redistributions in binary form must reproduce the above copyright notice,
 *    this list of conditions and the following disclaimer in the documentation
-*    and/or other materials provided with the distribution. 
-* 
+*    and/or other materials provided with the distribution.
+*
 * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -30,11 +30,11 @@
 * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-* 
+*
 * The views and conclusions contained in the software and documentation are those
-* of the authors and should not be interpreted as representing official policies, 
+* of the authors and should not be interpreted as representing official policies,
 * either expressed or implied, of the California Institute of Technology.
-* 
+*
 */
 
 #include "graphs.hpp"
@@ -60,35 +60,35 @@ void keyboard_handler(SDL_keysym* keysym, bool state) {
     Star * u = map->getSelectedStar();
     Star * v = map->getSelectedStar2();
     switch(keysym->sym) {
-        case SDLK_ESCAPE:    
+        case SDLK_ESCAPE:
             SDL_Quit();
             exit(0);
         break;
-        
+
         case SDLK_u:
             d_dist = (state ? 1./ZOOM_PROPORTION : 1);
         break;
-        
+
         case SDLK_o:
             d_dist = (state ? ZOOM_PROPORTION : 1);
         break;
-        
+
         case SDLK_i:
             d_alt = (state ? ALT_DELTA_ACTIVE : 0);
         break;
-        
+
         case SDLK_k:
             d_alt = (state ? -ALT_DELTA_ACTIVE : 0);
         break;
-        
+
         case SDLK_j:
             d_azm = (state ? -AZM_DELTA_ACTIVE : AZM_DELTA_PASSIVE);
         break;
-        
+
         case SDLK_l:
             d_azm = (state ? AZM_DELTA_ACTIVE : AZM_DELTA_PASSIVE);
         break;
-        
+
         case SDLK_RETURN:
             if(state && u != NULL && v != NULL)
             {
@@ -104,7 +104,7 @@ void keyboard_handler(SDL_keysym* keysym, bool state) {
                 }
             }
         break;
-        
+
         case SDLK_q:
             if(state)
             {
@@ -113,7 +113,7 @@ void keyboard_handler(SDL_keysym* keysym, bool state) {
                 cost_spec.lowSecCostMult = 1.0;
             }
         break;
-        
+
         case SDLK_w:
             if(state)
             {
@@ -122,7 +122,7 @@ void keyboard_handler(SDL_keysym* keysym, bool state) {
                 cost_spec.lowSecCostMult = 20.0;
             }
         break;
-        
+
         case SDLK_e:
             if(state)
             {
@@ -131,7 +131,7 @@ void keyboard_handler(SDL_keysym* keysym, bool state) {
                 cost_spec.lowSecCostMult = 1.0;
             }
         break;
-        
+
         case SDLK_a:
             if(state)
             {
@@ -147,7 +147,7 @@ void keyboard_handler(SDL_keysym* keysym, bool state) {
                 }
             }
         break;
-        
+
         case SDLK_t:
             if(state)
             {
@@ -164,6 +164,9 @@ void keyboard_handler(SDL_keysym* keysym, bool state) {
                 }
             }
         break;
+
+        default:
+        break;
     }
 }
 
@@ -177,17 +180,17 @@ void mouse_handler(Uint8 button, Uint8 state, Uint16 x, Uint16 y)
         case SDL_BUTTON_LEFT:
             map->mouseSelect(0, x, y, dist, azm, alt);
         break;
-        
+
         case SDL_BUTTON_RIGHT:
             map->mouseSelect(1, x, y, dist, azm, alt);
         break;
-        
+
         case SDL_BUTTON_MIDDLE:
             map->mouseSelect(2, x, y, dist, azm, alt);
         break;
     }
 }
- 
+
 /**
  * @brief Processes events thrown by SDL and dispatches them to handlers.
  */
@@ -195,19 +198,19 @@ void handle_events() {
     SDL_Event event;
     while(SDL_PollEvent(&event)) {
         switch(event.type) {
-            case SDL_KEYDOWN:    
-                keyboard_handler(&event.key.keysym, true); 
+            case SDL_KEYDOWN:
+                keyboard_handler(&event.key.keysym, true);
             break;
-            
-            case SDL_KEYUP: 
-                keyboard_handler(&event.key.keysym, false);   
+
+            case SDL_KEYUP:
+                keyboard_handler(&event.key.keysym, false);
             break;
-            
+
             case SDL_MOUSEBUTTONUP:
                 mouse_handler(event.button.button, event.button.state, event.button.x, event.button.y);
             break;
-            
-            case SDL_QUIT: 
+
+            case SDL_QUIT:
                 SDL_Quit();
                 exit(0);
             break;
@@ -224,17 +227,17 @@ int main(int argc, char ** argv)
         FATAL("Unable to initialize SDL: %s\n", SDL_GetError());
         return 1;
     }
-     
+
     // Initialise the SDL screen
     SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
-    SDL_Surface* screen = SDL_SetVideoMode( WIDTH, HEIGHT, 16, SDL_OPENGL );
-    
+    SDL_SetVideoMode( WIDTH, HEIGHT, 16, SDL_OPENGL );
+
     glutInit(&argc, argv);
-    
+
     // Set up OpenGL
     glClearColor(0, 0, 0, 0);
     glClearDepth(1.0f);
-    
+
     // Set up blending
     glEnable (GL_BLEND);
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -247,18 +250,18 @@ int main(int argc, char ** argv)
     glLoadIdentity();
     glEnable(GL_DEPTH_TEST);
     gluPerspective(45, (double)WIDTH/HEIGHT, .0001, 1000);
-    
+
     // All application-level transforms will take place in the modelview matrix
     glMatrixMode(GL_MODELVIEW);
-#endif    
-    
+#endif
+
     // create and center the starmap
     map = new Starmap();
     map->loadStarmapFromDB();
     map->setFocus(map->getStar(30000142));
-    
+
     /**** PLACE NON-GRAPHICS TEST CODE BELOW ****/
-    
+
     // Test vector for shortest-path algorithm
     INFO("Testing shortest-path algorithm...");
     Star * u = map->getStar(30000119);
@@ -274,26 +277,26 @@ int main(int argc, char ** argv)
     {
         INFO("Hop %d: %s", pidx++, (*pi)->getName().c_str());
     }
-    
+
     // Test vector for minimum spanning tree algorithm
     INFO("Testing MST algorithm...");
     map->generateMST(false);
     INFO("Finished.");
-    
+
     /**** PLACE NON-GRAPHICS TEST CODE ABOVE ****/
-    
-#ifndef NO_GFX    
+
+#ifndef NO_GFX
     // Let's do a render loop
     while(true)
     {
         // process a bunch of SDL events
-        handle_events(); 
-        
+        handle_events();
+
         // now do some rendering
         // first clear the render buffer
         glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
         glLoadIdentity();
-        
+
         // all right, render the map
         glEnable(GL_POINT_SMOOTH);
         glEnable(GL_LINE_SMOOTH);
@@ -301,18 +304,18 @@ int main(int argc, char ** argv)
         glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
         glPointSize(1.0);
         map->render(dist, azm, alt);
-        
+
         // and display the new frame
         SDL_GL_SwapBuffers();
-        
+
         // and update any global state needing updating
         azm += d_azm;
         dist *= d_dist;
         alt += d_alt;
-        
+
         SDL_Delay(0.01);
-        
+
     }
-#endif    
+#endif
     return 0;
 }

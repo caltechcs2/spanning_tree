@@ -8,14 +8,14 @@ DOCDIR = doc
 CC = g++
 LD = g++
 DOCGEN = doxygen
-CFLAGS = 
-CPPFLAGS = -std=c++0x -I$(SRCDIR) -g 
+CFLAGS =
+CPPFLAGS = -std=c++11 -Wall -pedantic -I$(SRCDIR) -g
 ifeq "$(CFLAGS)" "-DNO_GFX"
 LDFLAGS = -lm -lsqlite3
 else
 LDFLAGS = -lm -lGL -lGLU -lglut -lsqlite3 `sdl-config --libs`
 endif
-DOCGENFLAGS = 
+DOCGENFLAGS =
 COMMON_SRCS = common.cpp error.cpp star.cpp starmap.cpp
 GRAPHVIEW_SRCS = graphs.cpp
 COMMON_OBJS = $(COMMON_SRCS:.cpp=.o)
@@ -29,10 +29,10 @@ docs :
 	$(DOCGEN) $(DOCGENFLAGS)
 
 graphview : $(addprefix $(OBJDIR)/,$(GRAPHVIEW_OBJS))
-	$(LD) -o $(BINDIR)/$@ $^ $(LDFLAGS) 
+	$(LD) -o $(BINDIR)/$@ $^ $(LDFLAGS)
 
 $(OBJDIR)/%.o : $(SRCDIR)/$(notdir %.cpp) $(SRCDIR)/$(notdir %.hpp)
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@ 
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 clean:
 	rm -f $(addprefix $(BINDIR)/,$(BINS)) $(OBJDIR)/*.o
