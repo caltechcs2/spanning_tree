@@ -79,6 +79,11 @@ std::list<Star*> Starmap::shortestPath(Star * src, Star * dest, CostSpec costs)
  * Prim's algorithm only works on fully connected subgraphs,
  * so you'll need a starting star within New Eden (and outside
  * Jove and CCP space) if you're not ignoring edges.
+ *
+ * @param[in] ignore_edges if false, then the MST found consists exclusively
+ * of edges that that are part of this Starmap. If true, then existing edges
+ * are ignored and we assume that all pairs of stars from this Starmap are
+ * connected by edges.
  */
 void Starmap::generateMST(bool ignore_edges)
 {
