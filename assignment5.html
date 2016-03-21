@@ -273,11 +273,9 @@
 
 <h3>Part 0: Debugging</h3>
 
-<p><div class="points easy">3</div>Here's a code snippet. Is there anything wrong with the <span class="code">dfs()</span> depth-first search routine? If so, how would you fix it? If not, how do you know?</p>
+<p><div class="points easy">3</div>Here's a code snippet. Is there anything wrong with the depth-first search algorithm implemented in <span class="code">dfs()</span>? If so, how would you fix it? If not, how do you know?</p>
 
 <p>True indicates that the value was found, and false indicates that the value was not found.</p>
-
-<div class="hint">Hint: make no <span class="hilite">assumptions</span> about the data structure on which you are running <span class="code">dfs()</span>.</div>
 
 <pre><code class="prettyprint">/* debugging example */
 
@@ -300,7 +298,7 @@ bool Node::dfs(int to_find)
         return true;
     }
     std::vector&lt;Node*&gt;::iterator i;
-    for(i = this-&gt;edges.begin(), i != this-&gt;edges.end(); i++)
+    for(i = this-&gt;edges.begin(); i != this-&gt;edges.end(); i++)
     {
         Node * n = *i;
         bool r = n-&gt;dfs(to_find);
