@@ -52,8 +52,8 @@ typedef double GLdouble;
 struct CostSpec
 {
     double costPerNormalEdge;       //!< cost for a normal edge
-    bool MSTEnabled;                //!< whether or not to use the minimum spanning tree
-    double costPerMSTEdge;          //!< cost for an edge on the minimum spanning tree
+    bool MSTEnabled;                //!< if true, use costPerMSTEdge instead of costPerNormalEdge for edges in MST
+    double costPerMSTEdge;          //!< if MSTEnabled, use this cost for an edge in the minimum spanning tree
     bool directJumpEnabled;         //!< whether or not to allow direct jumps
     double directJumpCostPerLY;     //!< cost per lightyear for a direct (off-grid) jump
     double lowSecCostMult;          //!< cost multiplier for traveling through lowsec (<0.5) space
