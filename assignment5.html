@@ -275,13 +275,14 @@
 
 <p><div class="points easy">1</div>Here's a code snippet. Is there anything wrong with the depth-first search algorithm implemented in <span class="code">dfs()</span>? If so, how would you fix it? If not, how do you know?</p>
 
-<p><div class="points easy">2</div>Show that the algorithm is correct by writing a simple test case.</p>
+<p><div class="points easy">2</div>Show that the algorithm is correct by writing a simple test case. Use the template below. </p>
 
-<p>True indicates that the value was found, and false indicates that the value was not found.</p>
+
 
 <pre><code class="prettyprint">/* debugging example */
 
-// assume all necessary headers are included
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
 
 class Node
 {
@@ -293,6 +294,7 @@ public:
     bool dfs(int to_find);
 };
 
+// true indicates that the value was found, and false indicates that the value was not found.
 bool Node::dfs(int to_find)
 {
     if(this-&gt;value == to_find)
@@ -310,6 +312,12 @@ bool Node::dfs(int to_find)
         }
     }
     return false;
+}
+
+int main(void)
+{
+    // TODO: Write your test code here
+
 }
 
 </code></pre>
