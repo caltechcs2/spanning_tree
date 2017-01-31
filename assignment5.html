@@ -147,7 +147,7 @@
 
 <div class="author">Author: Ben Yuan</div>
 <h1>CS2 Assignment 5: Graphs</h1>
-<h2>Due Tuesday, February 9, 2016, at 17:00 PST</h2>
+<h2>Due Tuesday, February 7, 2017, at 17:00 PST</h2>
 
 <hr />
 
@@ -167,7 +167,7 @@
 <ul>
 <li>Read.</li>
 <ul>
-<li>In particular, read about a couple of problems set in a likely-unfamiliar domain, and 'tease out' the computer science without being bogged down by arcane flavor text.</li>
+<li>In particular, read about a couple of problems from in a likely-unfamiliar domain, and 'tease out' the computer science without being bogged down by arcane flavor text.</li>
 </ul>
 <li>Understand a reasonably complex codebase.</li>
 <ul>
@@ -273,7 +273,9 @@
 
 <h3>Part 0: Debugging</h3>
 
-<p><div class="points easy">3</div>Here's a code snippet. Is there anything wrong with the depth-first search algorithm implemented in <span class="code">dfs()</span>? If so, how would you fix it? If not, how do you know?</p>
+<p><div class="points easy">1</div>Here's a code snippet. Is there anything wrong with the depth-first search algorithm implemented in <span class="code">dfs()</span>? If so, how would you fix it? If not, how do you know?</p>
+
+<p><div class="points easy">2</div>Show that the algorithm is correct by writing a simple test case.</p>
 
 <p>True indicates that the value was found, and false indicates that the value was not found.</p>
 
@@ -326,17 +328,17 @@ bool Node::dfs(int to_find)
 
 <h4>Short Answer</h4>
 
-<p>This section is most useful if you reason through these problems on your own, or discuss the problems lightly with a friend or TA. Try not to consult external resources for the answers. All answers you provide must be your own.</p>
+<p>This section is most useful if you reason through these problems on your own, or discuss the problems lightly with a friend or TA. Try not to consult external resources for the answers. All answers you provide must be your own. Put your answers to the questions below in a file named  <span class="code">MST_answers.txt.</span></p>
 
-<p><div class="points easy">0.5</div>Before we can talk about MST algorithms, we need to pinpoint precisely what a MST is. What are the three most essential properties of a MST? Explain what each of these properties really means in terms of graphs and their properties. (Hint: it's all in the name!)</p>
+<p><div class="points easy">1</div>Before we can talk about MST algorithms, we need to pinpoint precisely what a MST is. What are the three most essential properties of a MST? Explain what each of these properties really means in terms of graphs and their properties. (Hint: it's all in the name!)</p>
 
 <p>Now that we understand the meaning of "minimum spanning tree", we can start to develop an algorithm. There are two common algorithms for this problem. We'll look at both of them.</p>
 
-<p><div class="points easy">0.5</div>Suppose we start off only with one node in our candidate tree. For the next step, we should pick an adjacent node and its edge to add to the tree. Which should we pick? Justify your answer.</p>
+<p>Suppose we start off only with one node in our candidate tree. For the next step, we should pick an adjacent node and its edge to add to the tree. Which should we pick? Justify your answer.</p>
 
-<p><div class="points easy">0.5</div>Now we have two (or three, or N) nodes in our candidate tree. Which nodes and edges should we pick at each subsequent step, and why? How do we know when we're finished, and why? (In the literature, this method is known as Prim's algorithm.)</p>
+<p>Now we have two (or three, or N) nodes in our candidate tree. Which nodes and edges should we pick at each subsequent step, and why? How do we know when we're finished, and why? (In the literature, this method is known as Prim's algorithm.)</p>
 
-<p><div class="points easy">0.5</div>Let's look at a different algorithm. Suppose that we instead start off with a lot of candidate trees - one per node, in fact. We can join trees at will by picking edges. Which edge should we pick at each step? When do we stop? Justify your answers. (In the literature, this method is known as Kruskal's algorithm.)</p>
+<p>Let's look at a different algorithm. Suppose that we instead start off with a lot of candidate trees - one per node, in fact. We can join trees at will by picking edges. Which edge should we pick at each step? When do we stop? Justify your answers. (In the literature, this method is known as Kruskal's algorithm.)</p>
 
 <h4>Programming</h4>
 
@@ -388,17 +390,17 @@ bool Node::dfs(int to_find)
 
 <h4>Short Answer</h4>
 
-<p>This section is most useful if you reason through these problems on your own, or discuss the problems lightly with a friend or TA. Try not to consult external resources for the answers. All answers you provide must be your own.</p>
+<p>This section is most useful if you reason through these problems on your own, or discuss the problems lightly with a friend or TA. Try not to consult external resources for the answers. All answers you provide must be your own. Place your answers to the questions below in a file named<span class="code">SSSP_answers.txt.</span></p>
 
 <p>We'll help you reason through a common shortest-paths algorithm known as Dijkstra's algorithm. This algorithm is the gold standard for the single-source problem; though superseded in some applications by the more sophisticated A* algorithm, Dijkstra's algorithm is still useful in cases where it is difficult to estimate the remaining distance to the goal, e.g. when edges have different weights independent of standard notions of 'distance'.</p>
 
-<p><div class="points easy">0.5</div>First, let's start off looking just at the source node. If we're trying to minimize the path length, which neighbor does it make the most sense to investigate first?</p>
+<p><div class="points easy">1</div>First, let's start off looking just at the source node. If we're trying to minimize the path length, which neighbor does it make the most sense to investigate first?</p>
 
-<p><div class="points easy">1</div>Now we have shortest paths to two nodes (or eventually three nodes, or eventually N nodes). Notice that, at least in the two-nodes case, both of these paths are shortest paths: one of them is trivial, and the other may be proven minimal by contradiction. If we're trying to minimize the path length to the goal - <span class="emph">which we have not yet found using our algorithm</span> - which node does it make the most sense to investigate at each further step? What else should we be doing at each step, if anything, to ensure that we'll end with a result that makes sense? Why does doing this end up yielding a shortest path to another node? (Does it?)</p>
+<p>Now we have shortest paths to two nodes (or eventually three nodes, or eventually N nodes). Notice that, at least in the two-nodes case, both of these paths are shortest paths: one of them is trivial, and the other may be proven minimal by contradiction. If we're trying to minimize the path length to the goal - <span class="emph">which we have not yet found using our algorithm</span> - which node does it make the most sense to investigate at each further step? What else should we be doing at each step, if anything, to ensure that we'll end with a result that makes sense? Why does doing this end up yielding a shortest path to another node? (Does it?)</p>
 
 <div class="hint">Hint: You may need to attach some additional information to each node.</div>
 
-<p><div class="points easy">0.5</div>Suppose we've done many iterations and have now found our goal. How do we know that we're done? How can we now derive the path we want?</p>
+<p>Suppose we've done many iterations and have now found our goal. How do we know that we're done? How can we now derive the path we want?</p>
 
 <h4>Programming</h4>
 
@@ -420,7 +422,7 @@ If MST edges are enabled in the <span class="code">CostSpec</span>, and both a r
 
 <div class="hint">Notice that you <span class="emph">will</span> need to add some functions and member variables in order to implement Dijkstra's algorithm successfully. Don't be afraid to switch things around!</div>
 
-<p><div class="points hard">2</div>Why stop at Dijkstra's algorithm, though? There are a number of shortest-path algorithms out there. If you implement another shortest-path algorithm alongside Dijkstra's algorithm and can somehow switch between them (e.g. with a preprocessor toggle), you can earn up to two extra points.</p>
+<p><div class="points hard">3</div>Why stop at Dijkstra's algorithm, though? There are a number of shortest-path algorithms out there. If you implement another shortest-path algorithm alongside Dijkstra's algorithm and can somehow switch between them (e.g. with a preprocessor toggle), you can earn up to two extra points.</p>
 
 <p>In any case, you'll need to return a <span class="code">std::list</span> listing out the stars in your supposed shortest path. Take advantage of the fact that you can add to lists on either end. The visualizer will take the list you return and go through all the stars within, drawing out your path on the screen.</p>
 
@@ -481,7 +483,7 @@ If MST edges are enabled in the <span class="code">CostSpec</span>, and both a r
 </ul>
 <p>What do you find? Speculate on the significance of your findings. Include your code with your submission. If you want to write separate analysis code and don't want to learn SQLite, you might find the CSV files in <span class="code">export/</span> helpful.</p>
 
-<p><div class="points hard">1</div>Jita is the largest trade hub in New Eden, processing more volume each day than all of the other major trade hubs combined. How might a trade hub like this arise? Is there anything special about the New Eden graph that would enable Jita to become the 'center of the universe'? If not, what might be some of the other social, historical, or gameplay-related factors that cause Jita to remain so economically important? Feel free to speculate; there is no single right answer.</p>
+<p>Jita is the largest trade hub in New Eden, processing more volume each day than all of the other major trade hubs combined. How might a trade hub like this arise? Is there anything special about the New Eden graph that would enable Jita to become the 'center of the universe'? If not, what might be some of the other social, historical, or gameplay-related factors that cause Jita to remain so economically important? Feel free to speculate; there is no single right answer.</p>
 
 <h4>Feedback</h4>
 
