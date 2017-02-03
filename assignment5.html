@@ -354,7 +354,7 @@ int main(void)
 
 <p><div class="points easy">1</div>Before you start, pick one of the algorithms you described in the short-answer section and outline it in your choice of stepwise English, Python, or other pseudocode. You should be able to refer to this outline and translate it more-or-less directly into working code.</p>
 
-<p><div class="points easy">3</div>Now open up <span class="code">src/starmap.cpp</span> in the assignment's source tree, and scroll down to <span class="code">void Starmap::generateMST(bool ignore_edges)</span>. This is the function you will need to implement. This function, when run, should find the minimum spanning tree of New Eden and store it in the <span class="code">mst_edges</span> member of every star in the MST you find. The <span class="code">ignore_edges</span> parameter specifies whether the edges that exist should be respected: if this is false, then the MST you find must contain no edges outside the edge set of the graph, but if this is true, then you must ignore the existing edges and assume that all pairs of stars are connected by edges even if this is not actually true.</p>
+<p><div class="points easy">4</div>Now open up <span class="code">src/starmap.cpp</span> in the assignment's source tree, and scroll down to <span class="code">void Starmap::generateMST(bool ignore_edges)</span>. This is the function you will need to implement. This function, when run, should find the minimum spanning tree of New Eden and store it in the <span class="code">mst_edges</span> member of every star in the MST you find. The <span class="code">ignore_edges</span> parameter specifies whether the edges that exist should be respected: if this is false, then the MST you find must contain no edges outside the edge set of the graph, but if this is true, then you must ignore the existing edges and assume that all pairs of stars are connected by edges even if this is not actually true.</p>
 
 <p>If you've done the short-answer section, you should already have an idea of how to proceed. You may implement either algorithm discussed in the short-answer section. You may also implement another algorithm if you happen to know of one; this will not yield any extra points.</p>
 
@@ -416,7 +416,7 @@ int main(void)
 
 <p><div class="points easy">1</div>Before you start, outline Dijkstra's algorithm in your choice of stepwise English, Python, or other pseudocode. You should be able to refer to this outline and translate it more-or-less directly into working code.</p>
 
-<p><div class="points easy">3</div>Now open up <span class="code">src/starmap.cpp</span> in the assignment's source tree, and scroll down to <span class="code">std::list&lt;Star*&gt; Starmap::shortestPath(Star * src, Star * dest, CostSpec costs)</span>. This is the function you will need to implement.</p>
+<p><div class="points easy">4</div>Now open up <span class="code">src/starmap.cpp</span> in the assignment's source tree, and scroll down to <span class="code">std::list&lt;Star*&gt; Starmap::shortestPath(Star * src, Star * dest, CostSpec costs)</span>. This is the function you will need to implement.</p>
 
 <p>This function declaration might be scary-looking, but it's actually not too bad: the function takes a source and destination star and a <span class="code">CostSpec</span>, which is a structure detailing the costs of all the different types of travel between stars, and returns a shortest path.</p>
 
