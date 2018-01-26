@@ -59,7 +59,8 @@ static CostSpec cost_spec;
 void keyboard_handler(SDL_keysym* keysym, bool state) {
     Star * u = map->getSelectedStar();
     Star * v = map->getSelectedStar2();
-    switch(keysym->sym) {
+    switch(keysym->sym)
+    {
         case SDLK_ESCAPE:
             SDL_Quit();
             exit(0);
@@ -196,8 +197,10 @@ void mouse_handler(Uint8 button, Uint8 state, Uint16 x, Uint16 y)
  */
 void handle_events() {
     SDL_Event event;
-    while(SDL_PollEvent(&event)) {
-        switch(event.type) {
+    while(SDL_PollEvent(&event))
+    {
+        switch(event.type)
+        {
             case SDL_KEYDOWN:
                 keyboard_handler(&event.key.keysym, true);
             break;
@@ -223,7 +226,8 @@ int main(int argc, char ** argv)
 {
 #ifndef NO_GFX
     // Set up SDL
-    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+    if (SDL_Init(SDL_INIT_VIDEO) != 0)
+    {
         FATAL("Unable to initialize SDL: %s\n", SDL_GetError());
         return 1;
     }
