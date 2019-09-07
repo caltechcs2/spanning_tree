@@ -366,10 +366,12 @@ void Starmap::mouseSelect(int which, int x, int y, double dist, double azm, doub
 
         ptr = (GLuint *) selectBuf;
         minZ = 0xffffffff;
-        for (i = 0; i < hits; i++) {
+        for (i = 0; i < hits; i++)
+        {
             names = *ptr;
             ptr++;
-            if (*ptr < minZ) {
+            if (*ptr < minZ)
+            {
                 numberOfNames = names;
                 minZ = *ptr;
                 ptrNames = ptr+2;
@@ -377,7 +379,8 @@ void Starmap::mouseSelect(int which, int x, int y, double dist, double azm, doub
 
             ptr += names+2;
         }
-        if (numberOfNames > 0) {
+        if (numberOfNames > 0)
+        {
             ptr = ptrNames;
             Star * u = this->stars[*ptr];
             INFO("Selecting star %s", u->getName().c_str());
